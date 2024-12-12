@@ -1,0 +1,113 @@
+/* Grundläggande stilar */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* För huvudrubriker */
+h2, h3 {
+    color: #444;
+    text-align: center;
+}
+
+/* Formulär och sektioner */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    margin: 15px;
+    border: none;
+    border-radius: 5px;    
+    background-color: #5c67f2;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4a53d1;
+}
+
+#register, #login, #dashboard, #users {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+
+#users-section {
+    margin-top: 20px;
+}
+
+/* Användarlistan */
+#users-list {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.user {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.user:last-child {
+    border-bottom: none;
+}
+
+/* Felmeddelanden */
+#error-message {
+    background-color: #ffe4e4;
+    color: #d9534f;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard */
+#dashboard {
+    text-align: center;
+}
+
+/* Responsiv design */
+@media (max-width: 600px) {
+    #register, #login, #dashboard, #users {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}
