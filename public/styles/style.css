@@ -26,6 +26,7 @@ form {
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
+    z-index: 1;
 }
 
 input[type="text"],
@@ -38,6 +39,8 @@ input[type="password"] {
 }
 
 button {
+    position: relative;
+    z-index: 10;
     padding: 10px;
     margin: 15px;
     border: none;
