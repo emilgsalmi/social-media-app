@@ -9,20 +9,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:5.7
-        ports:
-          - 8889:3306 # Mappa MySQL-tjänsten till port 8889
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: social_media_db
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -35,25 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..30}; do
-            if mysqladmin ping -h127.0.0.1 -uroot -proot --port=8889 --silent; then
-              echo "MySQL is ready"
-              break
-            fi
-            echo "Waiting for MySQL on port 8889..."
-            sleep 2
-          done
-
-      - name: Initialize database
-        run: |
-          mysql -h127.0.0.1 -uroot -proot --port=8889 -e "CREATE DATABASE IF NOT EXISTS social_media_db;"
-          mysql -h127.0.0.1 -uroot -proot --port=8889 social_media_db < ./db/init.sql
-
       - name: Start server
-        run: |
-          nohup npm start &
+        run: npm start 
 
       - name: Run Jest tests
         run: npm test
