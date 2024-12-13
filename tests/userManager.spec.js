@@ -1,5 +1,5 @@
 const UserManager = require('./../src/modules/UserManager')
-const User = require('./../src/modules/user')
+const User = require('./../src/modules/User')
 
 describe('UserManager', () => {
     let userManager
