@@ -1,4 +1,4 @@
-const UserDatabase = require('../src/modules/userDatabase')
+const UserDatabase = require('../src/modules/UserDatabase')
 
 describe('UserDatabase', () => {
     let userDatabase
@@ -15,7 +15,6 @@ describe('UserDatabase', () => {
                 query: mockQuery,
             })),
         }
-    
         userDatabase = new UserDatabase(mockDb)
     })
     
