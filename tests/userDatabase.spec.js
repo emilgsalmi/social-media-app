@@ -1,8 +1,8 @@
-const UserDatabase = require('../src/modules/userDatabase')
+const UserDatabase = require('./src/modules/UserDatabase')
 
 describe('UserDatabase', () => {
-    let userDatabase;
-    let mockDb;
+    let userDatabase
+    let mockDb
 
     beforeEach(() => {
         const mockQuery = jest.fn(() => Promise.resolve([[]]))
