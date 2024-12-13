@@ -31,7 +31,7 @@ jobs:
       run: npm start
 
     - name: Wait for server to be available
-      run: wait-on http://localhost:3000
+      run: wait-on 'http://localhost:3000/'
 
     - name: Run Jest tests
       run: npm test -- --coverage
