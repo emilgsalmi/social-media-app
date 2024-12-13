@@ -2,12 +2,12 @@
   "name": "social-media-app",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "start": "nodemon server.js"
+    "start": "node ./src/services/server.js"
   },
   "keywords": [],
   "author": "",
