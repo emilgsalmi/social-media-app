@@ -27,14 +27,7 @@ jobs:
       run: |
         nohup npm start &  
         sleep 10  
-
-    - name: Verify server is running
-      run: |
-        until curl --silent --fail http://localhost:3000; do
-          echo "Waiting for server to start..."
-          sleep 5  
-        done
-
+        
     - name: Run Jest tests
       run: npm test -- --coverage
 
