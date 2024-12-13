@@ -44,7 +44,9 @@ jobs:
     - name: Run Cypress tests
       uses: cypress-io/github-action@v5
       with:
-        start: npx cypress run
+        start: npm start
+        browser: chrome
+        wait-on: 'http://localhost:3000/en'
 
     - name: Upload Cypress test results
       if: success()
