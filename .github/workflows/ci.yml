@@ -41,12 +41,13 @@ jobs:
     - name: Install Cypress dependencies
       run: npm install cypress
 
+    - name: Start the server
+      run: npm start &
+      env:
+        NODE_ENV: test
+
     - name: Run Cypress tests
-      uses: cypress-io/github-action@v5
-      with:
-        start: npx cypress run
-        browser: chrome
-        wait-on: 'http://localhost:3000/en'
+      run: npx cypress run
 
     - name: Upload Cypress test results
       if: success()
