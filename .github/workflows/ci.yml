@@ -1,0 +1,69 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Jest tests
+      run: npm test -- --coverage
+
+    - name: Upload Jest Coverage Report
+      if: success()
+      uses: actions/upload-artifact@v3
+      with:
+        name: jest-coverage
+        path: coverage/lcov-report
+
+    - name: Install Cypress dependencies
+      run: npm install cypress
+
+    - name: Run Cypress tests
+      run: npx cypress run
+
+    - name: Upload Cypress test results
+      if: success()
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-results
+        path: cypress/videos/
+
+  deploy-coverage:
+    needs: test
+    name: Deploy Coverage Report
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Deploy Coverage Report
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coverage/lcov-report
