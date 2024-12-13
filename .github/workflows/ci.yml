@@ -24,7 +24,9 @@ jobs:
       run: npm install
 
     - name: Start server in background
-      run: npm start        
+      run: |
+        nohup npm start &  
+        sleep 180  
 
     - name: Run Jest tests
       run: npm test -- --coverage
