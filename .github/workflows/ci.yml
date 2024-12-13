@@ -28,8 +28,7 @@ jobs:
       run: npm install wait-on --save-dev
 
     - name: Start server in background
-      run: |
-        nohup npm start
+      run: npm start
 
     - name: Wait for server to be available
       run: wait-on http://localhost:3000
