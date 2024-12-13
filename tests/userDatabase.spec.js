@@ -1,4 +1,4 @@
-const UserDatabase = require('./src/modules/UserDatabase')
+const UserDatabase = require('../src/modules/userDatabase')
 
 describe('UserDatabase', () => {
     let userDatabase
