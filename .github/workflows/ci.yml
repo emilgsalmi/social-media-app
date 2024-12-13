@@ -42,7 +42,7 @@ jobs:
       run: npm install cypress
 
     - name: Start server and wait for it to be ready
-    run: |
+      run: |
       nohup npm start &
       npx wait-on http://localhost:3000
 
