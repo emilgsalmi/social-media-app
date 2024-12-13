@@ -27,7 +27,7 @@ jobs:
       run: |
         nohup npm start &  
         sleep 10  
-        
+
     - name: Run Jest tests
       run: npm test -- --coverage
 
@@ -42,7 +42,11 @@ jobs:
       run: npm install cypress
 
     - name: Run Cypress tests
-      run: npx cypress run
+      uses: cypress-io/github-action@v5
+      with:
+        start: npm run start
+        browser: chrome
+        wait-on: 'http://localhost:3000'
 
     - name: Upload Cypress test results
       if: success()
