@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const userRoutes = require('../services/userRoutes')
+const port = 3000
 
 const app = express()
 
@@ -15,6 +16,6 @@ app.get('/', (req, res) => {
 
 app.use('/', userRoutes)
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server running on http://localhost:3000')
 })

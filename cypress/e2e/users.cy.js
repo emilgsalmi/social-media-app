@@ -1,7 +1,7 @@
 describe('User Management', () => {
   beforeEach(() => {
-      cy.wait(1000)
       cy.visit('http://localhost:3000')
+      cy.wait(2000)
   })
 
   it('Registers a new user successfully', () => {
