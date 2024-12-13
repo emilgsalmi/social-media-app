@@ -21,8 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Start server
+        run: |
+          nohup npm start 
+
       - name: Run Jest tests
         run: npm test
 
       - name: Run Cypress tests
-        run: npm run test:e2e
+        run: npx cypress run
