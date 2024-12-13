@@ -28,6 +28,13 @@ jobs:
         nohup npm start &  # Startar servern i bakgrunden
         sleep 10  # Vänta för att servern ska starta ordentligt
 
+    - name: Verify server is running
+      run: |
+        until curl --silent --fail http://localhost:3000; do
+          echo "Waiting for server to start..."
+          sleep 5  # Vänta 5 sekunder innan du försöker igen
+        done
+
     - name: Run Jest tests
       run: npm test -- --coverage
 
