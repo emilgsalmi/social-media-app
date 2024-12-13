@@ -1,6 +1,6 @@
 const express = require('express')
 const UserManager = require('../modules/UserManager')
-const UserDatabase = require('../src/modules/UserDatabase');
+const UserDatabase = require('../src/modules/userDatabase');
 const mysql = require('mysql2')
 
 const router = express.Router()
