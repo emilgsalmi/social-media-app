@@ -27,7 +27,7 @@ jobs:
 
       - name: Wait for server to start
         run: |
-          npx wait-on http://localhost:3000
+          npx wait-on '127.0.0.1'
 
       - name: Run Jest tests
         run: npm test
