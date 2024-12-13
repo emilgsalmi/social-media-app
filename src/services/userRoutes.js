@@ -5,7 +5,7 @@ const mysql = require('mysql2')
 
 const router = express.Router()
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
     password: 'root',
     database: 'social_media_db',
