@@ -25,10 +25,6 @@ jobs:
         run: |
           nohup npm start &
 
-      - name: Wait for server to start
-        run: |
-          npx wait-on '127.0.0.1'
-
       - name: Run Jest tests
         run: npm test
 
