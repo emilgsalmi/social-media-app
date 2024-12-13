@@ -23,15 +23,17 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-
-    - name: Install wait-on (to wait for server to start)
-      run: npm install wait-on --save-dev
-
     - name: Start server in background
-      run: npm start
+      run: |
+        nohup npm start &  
+        sleep 10  
 
-    - name: Wait for server to be available
-      run: wait-on 'http://localhost:3000/'
+    - name: Verify server is running
+      run: |
+        until curl --silent --fail http://localhost:3000; do
+          echo "Waiting for server to start..."
+          sleep 5  
+        done
 
     - name: Run Jest tests
       run: npm test -- --coverage
@@ -55,3 +57,26 @@ jobs:
       with:
         name: cypress-results
         path: cypress/videos/
+        
+  deploy-coverage:
+    needs: test
+    name: Deploy Coverage Report
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Deploy Coverage Report
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coverage/lcov-report
+
