@@ -9,7 +9,7 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'root',
     database: 'social_media_db',
-    port: 8889
+    port: 3306
 })
 
 const userDatabase = new UserDatabase(db)
