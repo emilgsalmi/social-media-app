@@ -25,9 +25,6 @@ jobs:
         run: |
           nohup npm start &
 
-      - name: Wair for server to start
-        run: npx wait-on http://localhost:3000
-
       - name: Run Jest tests
         run: npm test
 
